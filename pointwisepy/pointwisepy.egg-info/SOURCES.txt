@@ -1,4 +1,3 @@
-README.md
 pyproject.toml
 pointwisepy/__init__.py
 pointwisepy/connect.py
