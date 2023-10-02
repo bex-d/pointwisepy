@@ -8,3 +8,6 @@ version = "1.0.0"
 dependencies = [
     "pointwise-glyph-client",
 ]
+
+[project.urls]
+"Homepage" = "https://github.com/bex-d/pointwisepy"
