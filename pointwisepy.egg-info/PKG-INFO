@@ -1,4 +1,0 @@
-Metadata-Version: 2.1
-Name: pointwisepy
-Version: 1.0.0
-Requires-Dist: pointwise-glyph-client
