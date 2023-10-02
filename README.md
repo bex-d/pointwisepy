@@ -43,11 +43,6 @@ To run example, download Examples folder:
 	python Examples/01_example.py
 
 
-
-
-
-
-
 http://www.pointwise.com/glyph2/ - Glyph documentation, lists all functions and options
 
 https://github.com/pointwise/GlyphClientPython - source code
