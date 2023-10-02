@@ -1,4 +1,5 @@
 # pointwisepy
+
 Python library for the Pointwise Glyph API. Not fully tested or documented yet.
 
 To download: 
@@ -21,7 +22,7 @@ To test batch mode, in command line/powershell:
 
 To connect to open GUI instance via command line/powershell: 
 
-	in PW: 
+	in Pointwise GUI: 
 	
  	Script > Glyph Server > Active & port=2807
 	
@@ -37,6 +38,10 @@ in cmd line/.py file:
 
 	pw,glf = connectPort(2807)
 	
+To run example, download Examples folder:
+
+	python Examples/01_example.py
+
 
 http://www.pointwise.com/glyph2/ - Glyph documentation, lists all functions and options
 
