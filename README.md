@@ -2,8 +2,7 @@
 
 Python library for the Pointwise Glyph API. Not fully tested or documented yet.
 
-To download: 
-To run the Pointwise Glyph API:
+To download:
 
 	python -m pip install --upgrade pointwisepy
 
@@ -18,7 +17,6 @@ To test batch mode, in command line/powershell:
  	from pointwisepy import *
 
 	pw,glf = connectPort(0)
-	
 
 To connect to open GUI instance via command line/powershell: 
 
@@ -41,7 +39,6 @@ in cmd line/.py file:
 To run example, download Examples folder:
 
 	python Examples/01_example.py
-
 
 http://www.pointwise.com/glyph2/ - Glyph documentation, lists all functions and options
 
