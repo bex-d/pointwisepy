@@ -13,6 +13,3 @@ def setCurveMaximumDeviation(pw,value):
 def setSurfaceCurvatureInfluence(pw,value=0):
     pw.Connector.setSurfaceCurvatureInfluence(value)
     
-
-def setDefaultDimension(pw,dim=0):
-    pw.Connector.setDefault('Dimension',dim)

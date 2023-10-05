@@ -1,6 +1,6 @@
 from pointwise import GlyphClient
 from pointwise.glyphapi import *
-
+     
 def createCon(pw,points=[[0,0,0]],linetype='con',seg="spline",slope='CatmullRom',shoulder=0,center=0,plane=(0,0,1),endAngle=0,setAngle=0,flipArc=0):
     #input point: [point] [point1,point2] [[x1,y1,z1][x2,y2,z2]]  
     #seg: "SegmentSpline", " SegmentConic"  
@@ -158,6 +158,7 @@ def createDom(pw,ents,gridtype='Unstructured'):
             print('Incorrect grid type: {}\nOptions are: "Structured", "Unstructured"'.format(gridtype))
         
     return doms
+      
 
 def createConsOnDatabase(pw,ents,gridtype='Unstructured'):
     # try:
@@ -187,7 +188,8 @@ def createConsOnDatabase(pw,ents,gridtype='Unstructured'):
         print('Incorrect grid type: {}\nOptions are: "Structured", "Unstructured"'.format(gridtype))
         
     return cons      
-    
+
+      
 def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):
     # BCs = [['bcname2',[ents]],['bcname2',[ents]]]
     with pw.Application.begin('VolumeMesher',ents) as mesher:

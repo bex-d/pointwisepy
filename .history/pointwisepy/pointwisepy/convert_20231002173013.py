@@ -1,5 +1,6 @@
 def extractNastranData(nasFile,outputFile):
-"""Open NAS file and output number of PSHELLs, nodes and elements (boundary faces). Used with NastranToFro. Redundant with /home/eg916039/codes/NastranToFro"""
+##Open NAS file and output number of PSHELLs, nodes and elements (boundary faces)
+##Redundant now with /home/eg916039/codes/NastranToFro
     with open(nasFile, "r") as f:
         for line in f:
             if line.startswith('PSHELL'):
