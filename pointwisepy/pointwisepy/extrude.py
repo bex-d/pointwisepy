@@ -1,6 +1,18 @@
 def ExtrusionSolver(pw,ents,mode,parameters,setKeepFailingStep=1):
-    # parameters: rotate: [RotateAxisStart,RotateAngle,steps,RotateAxisEnd (optional)]
-    #mode: 'Rotate'
+    """
+    Extrude entities. Will need modifying/testing for general use. 
+    
+    Arguments:
+        pw: Requires Pointwise license
+        ents: Entities to extrude. 
+        mode: 'Rotate' 
+        parameters: 
+            for rotate: [RotateAxisStart,RotateAngle,steps,RotateAxisEnd (optional)]
+        setKeepFailingStep: Optional. If extrusion fails, keep last step. Default is 1 (keep). 
+        
+    Returns:
+        Extruded domain
+    """
     with pw.Application.begin('Create') as create:
         edge = pw.Edge.createFromConnectors(ents)
         dom = pw.DomainStructured.create()
