@@ -15,26 +15,13 @@ def trimBySurfaces(pw,ents1,ents2,mode='Both',keep='Both'):
     return pw.Quilt.trimBySurfaces('-mode',mode,'-keep',keep,ents1,ents2)
     
 def interpolate(pw,ent1,ent2,tol=0,orient='Best'):
-    """
-    Interpolate surface between two database entities
-    
-    Arguments:
-    ents1: First entity
-    ents2: Second entity
-    tol: Optional. Fit tolerance. Defaults to default tolerance.
-    orient: Optional. Orientation of interpolation. 'Best', 'Same', 'Opposite'. 'Best' aims for flatest surface. 
-    
-    Returns:
-    New surface
-    
-    """
     try:
         with pw.Application.begin('Create') as creator:
             surf = pw.Surface.create()
             if tol != 0:
-                surf.interpolate('-orient',orient,'-tolerance',tol,ent1,ent2)
+                surf.interpolate('-orient','Best','-tolerance',tol,ents)
             else:
-                surf.interpolate('-orient',orient,ent1,ent2)
+                surf.interpolate('-orient','Best',ent1,ent2)
             return surf
 
     except: 

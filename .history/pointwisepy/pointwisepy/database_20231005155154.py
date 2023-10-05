@@ -21,11 +21,11 @@ def interpolate(pw,ent1,ent2,tol=0,orient='Best'):
     Arguments:
     ents1: First entity
     ents2: Second entity
-    tol: Optional. Fit tolerance. Defaults to default tolerance.
-    orient: Optional. Orientation of interpolation. 'Best', 'Same', 'Opposite'. 'Best' aims for flatest surface. 
+    tol: Fit tolerance. Optional. Defaults to default tolerance.
+    orient:  
     
     Returns:
-    New surface
+    List of trimmed entities
     
     """
     try:
