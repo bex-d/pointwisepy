@@ -6,7 +6,6 @@ def createCon(pw,points=[[0,0,0]],seg="spline",slope='CatmullRom',shoulder=0,cen
     Creates connector
     
     Arguments:
-    pw: requires Pointwise license
     points: list of coordinates. Accepts single coordinate for node creation. [[x1,y1,z1],[x2,y2,z2]]
     seg: Optional. Segment type. 'Spline', 'Conic', or 'Circle' 
     slope: Optional. Set slope. Default 'CatmullRom'. Options 'Linear','Akima',''CatmullRom','Free'. Record Glyph journal if unsure. 
@@ -67,7 +66,6 @@ def createCurve(pw,points=[[0,0,0]],seg="spline",slope=0,shoulder=0,center=0,pla
     Creates database curve
     
     Arguments:
-    pw: requires Pointwise license
     points: list of coordinates. Accepts single coordinate for node creation. [[x1,y1,z1],[x2,y2,z2]]
     seg: Optional. Segment type. 'Spline', 'Conic', or 'Circle' 
     slope: Optional. Set slope. Options 'Linear','Akima',''CatmullRom','Free'. Record Glyph journal if unsure. 
@@ -129,7 +127,6 @@ def createSource(pw,seg="spline",slope=0,points=[[0,0,0]],shoulder=0,center=0,pl
     Creates source curve
     
     Arguments:
-    pw: requires Pointwise license
     points: list of coordinates. Accepts single coordinate for node creation. [[x1,y1,z1],[x2,y2,z2]]
     seg: Optional. Segment type. 'Spline', 'Conic', or 'Circle' 
     slope: Optional. Set slope. Options 'Linear','Akima',''CatmullRom','Free'. Record Glyph journal if unsure. 
@@ -185,7 +182,6 @@ def createDom(pw,ents,gridtype='Unstructured'):
     Create domains. 
     
     Arguments:
-    pw: requires Pointwise license
     ents: list of entities from which to create domain. Either database entities or connectors. 
     gridtype: 'Structured', 'Unstructured'. Default is unstructured mesh.
     
@@ -227,7 +223,6 @@ def createConsOnDatabase(pw,ents,gridtype='Unstructured'):
     Create connectors on database. 
     
     Arguments:
-    pw: requires Pointwise license
     ents: list of database entities from which to create connectors. 
     gridtype: 'Structured', 'Unstructured'. Default is unstructured mesh.
     
@@ -246,10 +241,9 @@ def createConsOnDatabase(pw,ents,gridtype='Unstructured'):
     return cons      
     
 def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):    """
-    Create farfield. Returns nothing.
+    Create farfield. No returns
     
     Arguments:
-    pw: requires Pointwise license
     ents: list of database entities from which to create connectors. 
     shape: Shape of farfield. "Box","Cylinder","Sphere","None". Default is sphere. 
     size: Farfield radius
@@ -267,27 +261,21 @@ def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):    """
         mesher.createGridEntities()
         mesher.end()
         
-# def createDomainFromConnectors(pw,ents,gridtype='Unstructured'):
+def createDomainFromConnectors(pw,ents,gridtype='Unstructured'):
       
-#     if gridtype == 'Unstructured' or gridtype == 'uns' or gridtype == 'U' or gridtype == 'u':
-#         pw.Application.setGridPreference('Unstructured')
-#         doms = pw.DomainUnstructured.createFromConnectors(ents)
-#     elif gridtype == 'Structured' or gridtype == 'struc' or gridtype == 'S' or gridtype == 's':
-#         pw.Application.setGridPreference('Structured')
-#         doms = pw.DomainStructured.createFromConnectors(ents)
-#     else:
-#         print('Incorrect grid type: {}\nOptions are: "Structured", "Unstructured"'.format(gridtype))
+    if gridtype == 'Unstructured' or gridtype == 'uns' or gridtype == 'U' or gridtype == 'u':
+        pw.Application.setGridPreference('Unstructured')
+        doms = pw.DomainUnstructured.createFromConnectors(ents)
+    elif gridtype == 'Structured' or gridtype == 'struc' or gridtype == 'S' or gridtype == 's':
+        pw.Application.setGridPreference('Structured')
+        doms = pw.DomainStructured.createFromConnectors(ents)
+    else:
+        print('Incorrect grid type: {}\nOptions are: "Structured", "Unstructured"'.format(gridtype))
         
-#     return doms      
+    return doms      
 
 def patch(pw,ent):
-    """
-    Creates surface from circular database curve. Returns surface entity.
     
-    Arguments:
-    pw: requires Pointwise license
-    ent: circular curve to create surface from
-    """
     with pw.Application.begin('SurfaceFit') as patcher:
         surface = patcher.createSurfacesFromCurves(ent)
         patcher.setBoundaryTolerance(pw.Database.getFitTolerance())
