@@ -1,4 +1,3 @@
-
 def zoomToFit(pw):  
     pw.Display.zoomToFit('-animate', 1)
     

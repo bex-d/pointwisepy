@@ -55,19 +55,26 @@ def disconnectPW():
 
 def reset(pw):
     """
-    Reset application settings.
+    Reset application settings. 
+    Arguments: 
+        pw: Requires Pointwise license
     """
     pw.Application.reset()
     
 def clearModified(pw):
     """
     Resets the flag to track modifications.
+    Arguments: 
+        pw: Requires Pointwise license
     """
     pw.Application.clearModified()
  
 def setUndoMaximumLevels(pw,levels=5):
     """
     Set number of undo actions to record. Irrelevant unless used with GUI.
+    Arguments: 
+        pw: Requires Pointwise license
+        levels: Optional. Number of undo levels. Default is 5. 
     """
     pw.Application.setUndoMaximumLevels(levels)
           
