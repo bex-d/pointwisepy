@@ -3,10 +3,11 @@ def trimBySurfaces(pw,ents1,ents2,mode='Both',keep='Both'):
     Trims database entities
     
     Arguments:
-    ents1: First group of entities
-    ents2: Second group of entities
-    mode: 'Both','First' Imprint 'Both' sets of entities on each other, or only first set on second. 
-    keep: Which set of entities to keep. 'Inside','Outside','Both' 
+        pw: Requires Pointwise license
+        ents1: First group of entities
+        ents2: Second group of entities
+        mode: 'Both','First' Imprint 'Both' sets of entities on each other, or only first set on second. 
+        keep: Which set of entities to keep. 'Inside','Outside','Both' 
     
     Returns:
     List of trimmed entities
@@ -19,10 +20,11 @@ def interpolate(pw,ent1,ent2,tol=0,orient='Best'):
     Interpolate surface between two database entities
     
     Arguments:
-    ents1: First entity
-    ents2: Second entity
-    tol: Optional. Fit tolerance. Defaults to default tolerance.
-    orient: Optional. Orientation of interpolation. 'Best', 'Same', 'Opposite'. 'Best' aims for flatest surface. 
+        pw: Requires Pointwise license
+        ents1: First entity
+        ents2: Second entity
+        tol: Optional. Fit tolerance. Defaults to default tolerance.
+        orient: Optional. Orientation of interpolation. 'Best', 'Same', 'Opposite'. 'Best' aims for flatest surface. 
     
     Returns:
     New surface
