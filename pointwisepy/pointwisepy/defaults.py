@@ -1,4 +1,3 @@
-    
 def setDefault(pw,default="Dimension",value=0):
     pw.Connector.setDefault(default,value)
 def setCalculateDimensionMethod(pw,method="Spacing"):
@@ -12,7 +11,5 @@ def setCurveMaximumDeviation(pw,value):
     pw.Connector.setCurveMaximumDeviation(value)
 def setSurfaceCurvatureInfluence(pw,value=0):
     pw.Connector.setSurfaceCurvatureInfluence(value)
-    
-
 def setDefaultDimension(pw,dim=0):
     pw.Connector.setDefault('Dimension',dim)

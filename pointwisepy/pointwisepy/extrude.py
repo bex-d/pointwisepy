@@ -1,4 +1,3 @@
-
 def ExtrusionSolver(pw,ents,mode,parameters,setKeepFailingStep=1):
     # parameters: rotate: [RotateAxisStart,RotateAngle,steps,RotateAxisEnd (optional)]
     #mode: 'Rotate'
