@@ -6,7 +6,7 @@ import os
 fileDir = os.getcwd()
 
 #connect to Pointwise license (batch mode)
-pw,glf = connectPort(2807)
+pw,glf = connectPort(0)
 
 print('Enter 4 digit NACA number:')
 NACA = input()
