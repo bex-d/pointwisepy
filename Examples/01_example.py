@@ -1,5 +1,5 @@
 # Import python library
-from pwpy import * 
+from pointwisepy_test import * 
 
 # Connect to Pointwise license
 # from pointwise import GlyphClient
@@ -17,11 +17,12 @@ coords = [[[0,0,0],[0,10,0]],[[0,10,0],[1,10,0]],[[1,0,0],[0,0,0]],[[1,10,0],[1,
 [[6,0,0],[6,2,0]],[[6,2,0],[7,2,0]],[[7,2,0],[7,0,0]],[[7,0,0],[6,0,0]],
 [[6,3,0],[6,10,0]],[[6,10,0],[7,10,0]],[[7,3,0],[7,10,0]],[[7,3,0],[6,3,0]]]
 
-# Create database curves & and append to list of curves
+# Create straight database curves & and append to list of curves
 curves = []
 for coord in coords:
     curves.append(createCurve(pw,coord))
 
+#create curved database curves and store objects
 curve1 = createCurve(pw,points=[[13,8,0],[12.5,8,0]],seg="circle",slope=0,shoulder=0,center=0,plane=(0,0,1),endAngle=360,angle=0)
 curve2 = createCurve(pw,points=[[16,8,0],[15.5,8,0]],seg="circle",slope=0,shoulder=0,center=0,plane=(0,0,1),endAngle=360,angle=0)
 curve3 = createCurve(pw,points=[[11,5,0],[17,5,0]],seg="circle",slope=0,shoulder=[14,2,0],center=0,plane=(0,0,1),endAngle=0,angle=0)

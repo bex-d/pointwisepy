@@ -4,13 +4,14 @@ import sys
 import time
 from .get import *
 
-def connectPort(port=0,result=None):   
+def connectPort(port=0,reset=1,result=None,):   
     """
     Connects to a Pointwise license. 
     For GUI: Script > Glyph Server > Active & port=2807
 
     Arguments:
     port: 0 for batch mode, 2807 for GUI
+    reset: 0 - append to existing project. 1 - Clear project (default). 
     result: None  - Will keep pinging server until license found
             False - Only look for license once
             
@@ -25,6 +26,8 @@ def connectPort(port=0,result=None):
         try:
             glf = GlyphClient(port=port)
             pw = glf.get_glyphapi()
+            if reset == 1:
+                pw.Application.reset()
             print('\nConnected to Pointwise, port {}'.format(port))
             return pw,glf
         
@@ -78,14 +81,14 @@ def setUndoMaximumLevels(pw,levels=5):
     """
     pw.Application.setUndoMaximumLevels(levels)
           
-def delete(pw,ents):
+def delete(pw,ents,dependents=0):
     """
     Deletes pointwise entities.
 
     Arguments:
     pw: Must be connected to Pointwise instance
-    ents: Entities to delete. Accepts defined pointwise entities and entity names as strings. May have to be a list? 
-    If entity is not removed from project, may have to delete dependents using '' or deleteSpecial(pw,ents) 
+    ents: Entity or list of entities to delete. Accepts defined pointwise entities and entity names as strings.
+    dependents: 0 (false, default) or 1 (true). If entity is not removed from project with delete(), try deleting dependents 
             
     Examples:
     delete(pw,getByType(pw,'Connector'))
@@ -99,7 +102,10 @@ def delete(pw,ents):
                     ent = getByName(pw,ent)
                 except:
                     print("No entity by name: {}".format(ent))
-            ent.delete()
+            if dependents == 1:
+                ent.delete('-dependents')
+            else:
+                ent.delete()
     except:
         ent = ents
         if type(ent) == str:
@@ -107,8 +113,11 @@ def delete(pw,ents):
                 ent = getByName(pw,ent)
             except:
                 print("No entity by name: {}".format(ent))
-            ent.delete()
-        
+            if dependents == 1:
+                ent.delete('-dependents')
+            else:
+                ent.delete()
+
 def deleteSpecial(pw,ents):
     """
     Untested, could be developed to delete dependent entities. 
@@ -152,9 +161,9 @@ def projectLoader(pw,filedir,repair=0,append=False):
         loader.initialize(filedir)
         if repair == 0:
             loader.setRepairMode('Defer')
-        elif repair =  'KeepGridPoints':
+        elif repair ==  'KeepGridPoints':
             loader.setRepairMode('KeepGridPoints')
-        elif repair =  'KeepDistributions':
+        elif repair ==  'KeepDistributions':
             loader.setRepairMode('KeepDistributions')
         else: 
             raise Exception("Incorrect defer mode in project loader: {}".format(repair)) 
@@ -165,6 +174,3 @@ def projectLoader(pw,filedir,repair=0,append=False):
 
 def undo(pw):
     pw.Application.undo()
-
-# def save(pw,filename):
-#     pw.Application.save(filename)    

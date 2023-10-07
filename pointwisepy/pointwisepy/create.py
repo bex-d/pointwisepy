@@ -19,9 +19,6 @@ def createCon(pw,points=[[0,0,0]],seg="spline",slope='CatmullRom',shoulder=0,cen
     
     Returns:
         Connector entity
-        
-    Examples:
-    
     """
     with pw.Application.begin("Create") as creator:
         if seg == "SegmentSpline" or seg=="Spline" or seg=="spline":
@@ -80,8 +77,6 @@ def createCurve(pw,points=[[0,0,0]],seg="spline",slope=0,shoulder=0,center=0,pla
     Returns:
         Database entity
         
-    Examples:
-    
     """
     # angle: [angle,normal]
     with pw.Application.begin("Create") as creator:
@@ -124,7 +119,7 @@ def createCurve(pw,points=[[0,0,0]],seg="spline",slope=0,shoulder=0,center=0,pla
         db.addSegment(seg)
         return db
        
-def createSource(pw,seg="spline",slope=0,points=[[0,0,0]],shoulder=0,center=0,plane=(0,0,1),endAngle=0):
+def createSource(pw,points=[[0,0,0]],seg="spline",slope=0,shoulder=0,center=0,plane=(0,0,1),endAngle=0):
     """
     Creates source curve
     
@@ -143,6 +138,7 @@ def createSource(pw,seg="spline",slope=0,points=[[0,0,0]],shoulder=0,center=0,pl
         Database entity
         
     Examples:
+        src1 = createSource(pw,points=[[0,0,0],[10,0,0]])
     
     """
     with pw.Application.begin("Create") as creator:
@@ -267,19 +263,6 @@ def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):
             
         mesher.createGridEntities()
         mesher.end()
-        
-# def createDomainFromConnectors(pw,ents,gridtype='Unstructured'):
-      
-#     if gridtype == 'Unstructured' or gridtype == 'uns' or gridtype == 'U' or gridtype == 'u':
-#         pw.Application.setGridPreference('Unstructured')
-#         doms = pw.DomainUnstructured.createFromConnectors(ents)
-#     elif gridtype == 'Structured' or gridtype == 'struc' or gridtype == 'S' or gridtype == 's':
-#         pw.Application.setGridPreference('Structured')
-#         doms = pw.DomainStructured.createFromConnectors(ents)
-#     else:
-#         print('Incorrect grid type: {}\nOptions are: "Structured", "Unstructured"'.format(gridtype))
-        
-#     return doms      
 
 def patch(pw,ent):
     """

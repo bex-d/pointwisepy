@@ -269,24 +269,3 @@ def revolve(pw,ent,params):
         db = pw.Surface.create()
         db.revolve('-angle',params[0],ent,params[1],params[2])
     return db
-    
-# def copyPaste(pw,ents,method,plane,axis=0,angle=0,anchor=0,point=0): 
-#     """
-#     untested
-#     """ 
-#     #method: 'rotate' 'scale'
-#     pw.Application.clearClipboard()
-#     pw.Application.setClipboard(ents)
-    
-#     with pw.Application.begin("Paste") as paste:
-#         ents = paste.getEntities()
-#         with pw.Application.begin("Modify",ents) as modifier:
-#             if method=="rotate":
-#                 print(ents)
-#                 return pw.Entity.transform(Transform.rotation(anchor,axis,angle),ents)
-#                 # pw.Entity.transform(Transform.rotation(anchor=(pwpy.getXYZ(pw,con280[1])),axis=(0,0,1),angle=90),con280)
-#             elif method=="scale":
-#                 return pw.Entity.transform(Transform.scaling('-anchor',point,plane,ents))
-#             elif method=="translation":
-#                 return pw.Entity.transform(Transform.translation(plane,ents))
-#             pw.Application.markUndoLevel('Translate')

@@ -8,4 +8,3 @@ from .get import *
 from .grid import *
 from .transform import *
 from .utilities import *
-from .view import *
