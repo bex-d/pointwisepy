@@ -1,15 +1,43 @@
-def merge(pw,con1,con2,mode='autoreplace'):
+def merge(pw,con1,con2,mode='auto'):
+    """
+    Merge two connectors. Returns new connector.
     
+    Arguments:
+        pw: Requires Pointwise license
+        con1: Pointwise object or name as string 
+        con2: Pointwise object or name as string 
+        mode: 
+            'auto': Default. Let Pointwise replace whichever is 'best'.
+            'first': Replaces first with second.
+    """
     if type(con1) == str:
         con1 = pw.GridEntity.getByName(con1)
     if type(con2) == str:
         con2 = pw.GridEntity.getByName(con2)
             
     with pw.Application.begin('Merge') as merger:
-        if mode == 'autoreplace':
+        if mode == 'auto':
             return merger.replace('-automatic',con1,con2)
+        elif mode == 'first':
+            return merger.replace(con1,con2)
+        else:
+            print('Incorrect merge mode: {}'.format(mode))
+            
   
 def setConnectorSpacings(pw,cons,spacing,mode='avg'):
+    """
+    Set connector spacings or end spacings.
+    
+    Arguments:
+        pw: Requires Pointwise license
+        cons: Pointwise object or name as string. Accepts list or individual connectors.
+        spacing: Spacing value. Float or integer 
+        mode: 
+            'avg': Set average spacing on connector
+            'begin': Set spacing at start of connector 
+            'end': Set spacing at end of connector
+            'number': Set number of points on connector
+    """
     if mode == 'Average' or mode == 'average' or mode == 'avg' or mode == 'a':
         if type(cons) is list:
             for con in cons:
@@ -74,7 +102,13 @@ def setConnectorSpacings(pw,cons,spacing,mode='avg'):
         
 
 def join(pw,ents):
+    """
+    Join two entities.
     
+    Arguments:
+        pw: Requires Pointwise license
+        ents: List of Pointwise objects.
+    """
     
     try:
         joinedEnts = pw.BlockStructured.join(ents)
@@ -116,10 +150,16 @@ def join(pw,ents):
     except:
         None
         
-        
     return joinedEnts
     
 def orient(pw,ents):
+    """
+    Orient entities.
+    
+    Arguments:
+        pw: Requires Pointwise license
+        ents: Pointwise object or list of objects.
+    """
     if type(ents) == list:
         for ent in ents:
             with pw.Application.begin('Modify',ent) as modifier:
@@ -128,15 +168,32 @@ def orient(pw,ents):
         with pw.Application.begin('Modify',ents) as modifier:
             ents.flipOrientation()
  
-def alignOrientation(pw,master_ent,ents):
+def alignOrientation(pw,main_ent,ents):
+    """
+    Align orientation of entities to match one entity. Not always accurate, check orientation manually in GUI.
+    
+    Arguments:
+        pw: Requires Pointwise license
+        main_ent: Pointwise object. Entity to match orientation to.
+        ents: Pointwise object or list of objects to re-orient.
+    """
     if type(ents) != list:
         ents = [ents]
   
     with pw.Application.begin('Modify',ents) as modifier:
-        master_ent.alignOrientation(ents)
+        main_ent.alignOrientation(ents)
 
 
 def exportGrid(pw,ents,filename,Type='Nastran',LargeWidth=False,FilePrecision='Double'):
+    """
+    Export grid entities to file. Default settings suitable for NastranToFro conversion.
+    
+    Arguments:
+        pw: Requires Pointwise license
+        ents: Pointwise object or list of objects.
+        filename: Directory and filename to save to. Include extension.
+        Type: file type. 'Nastran' (default), 'Automatic','Gridgen','IGES','STL','GridPro','VRML','VRML97','PLOT3D','Segment','Patran','UCD','Xpatch','FVUNS','FVUNS30','CGNS','CGNS-STRUCT','CGNS-UNSTR'
+    """
     with pw.Application.begin('GridExport',ents) as exporter:
         exporter.initialize('-strict','-type',Type,filename)
         if Type=='Nastran':
@@ -146,6 +203,15 @@ def exportGrid(pw,ents,filename,Type='Nastran',LargeWidth=False,FilePrecision='D
         exporter.verify()
         exporter.write()
         exporter.end()
+        print('Exported grid as {} to {}'.format(Type,filename))
 
 def split(pw,ent,params):
+    """
+    Split entities.
+    
+    Arguments:
+        pw: Requires Pointwise license
+        ent: Pointwise object.
+        params: Float between 0 and 1. Specifics for each object type can be found under Glyph function 'split' (https://pointwise.com/doc/glyph2/index/Functions16.html#S)
+    """
     return ent.split(params)

@@ -382,4 +382,9 @@ def updateDisplay(pw):
     Updates display. Useful for checking progress of script running on connected GUI instance.
     """
     pw.Display.update()
-    
+
+def setProjection(pw,proj='Orthonormal'):
+    """
+    Set projection 'Perspective' or 'Orthonormal'
+    """
+    pw.Display.setProjection(proj)
