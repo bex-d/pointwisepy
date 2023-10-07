@@ -245,7 +245,8 @@ def createConsOnDatabase(pw,ents,gridtype='Unstructured'):
         
     return cons      
     
-def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):    """
+def createFarfield(pw,ents,shape='Sphere',size=[],BCs=[]):    
+    """
     Create farfield. Returns nothing.
     
     Arguments:
