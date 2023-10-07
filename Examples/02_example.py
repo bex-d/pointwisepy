@@ -21,7 +21,7 @@ projectFile = append(fileDir,projectFile,'.pw')
 points = naca4(str(NACA),100)
 
 #plot aerofoil
-for i = 0:length(points)-1:
+for i in range (0,length(points)-1):
     createCon(pw,points[i],points[i+1])
 createCon(pw,points[0],points[end])
 
