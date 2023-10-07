@@ -3,4 +3,3 @@ Name: pointwisepy
 Version: 1.0.2
 Project-URL: Homepage, https://github.com/bex-d/pointwisepy
 Requires-Dist: pointwise-glyph-client
-Requires-Dist: time
