@@ -1,6 +1,5 @@
 pyproject.toml
 pointwisepy/__init__.py
-pointwisepy/connect.py
 pointwisepy/convert.py
 pointwisepy/create.py
 pointwisepy/database.py
@@ -11,7 +10,7 @@ pointwisepy/extrude.py
 pointwisepy/get.py
 pointwisepy/grid.py
 pointwisepy/transform.py
-pointwisepy/view.py
+pointwisepy/utilities.py
 pointwisepy.egg-info/PKG-INFO
 pointwisepy.egg-info/SOURCES.txt
 pointwisepy.egg-info/dependency_links.txt

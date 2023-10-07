@@ -2,8 +2,8 @@
 from pwpy import * 
 
 # Connect to Pointwise license
-from pointwise import GlyphClient
-from pointwise.glyphapi import *
+# from pointwise import GlyphClient
+# from pointwise.glyphapi import *
 pw,glf = connectPort(2807)
 
 # Reset settings
