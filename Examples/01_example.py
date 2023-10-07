@@ -1,5 +1,5 @@
 # Import python library
-from pointwisepy_test import * 
+from pointwisepy import * 
 
 # Connect to Pointwise license
 # from pointwise import GlyphClient

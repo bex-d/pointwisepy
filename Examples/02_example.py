@@ -1,5 +1,5 @@
 from naca import naca4 #From https://github.com/dgorissen/naca
-from pointwisepy_test import *
+from pointwisepy import *
 import os
 
 #get current working directory
