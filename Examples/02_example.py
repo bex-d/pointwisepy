@@ -14,7 +14,7 @@ NACA = input()
 print('Enter filename to save to (no extension):')
 filename = input()
 
-nasFile = fileDir+'/'+filename+'.nas'
+datFile = fileDir+'/'+filename+'.dat'
 projectFile = fileDir+'/'+filename+'.pw'
 
 #get coordinates for NACA aerofoil
@@ -37,7 +37,7 @@ createCon(pw,points=[[-50,0,0],(0.5,0,0)],seg="circle",plane=(0,0,1),endAngle=36
 zoomToFit(pw)
 delete(pw,'con-201')
 
-#get all grid entities and export .nas file
-exportGrid(pw,getByType(pw,'g'),nasFile)
+#get all grid entities and export .dat file
+exportGrid(pw,getByType(pw,'g'),datFile,Type='Segment')
 
 save(pw,projectFile)
