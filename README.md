@@ -42,4 +42,4 @@ To run example, download Examples folder and run:
 
 http://www.pointwise.com/glyph2/ - Glyph documentation, lists all functions and options
 
-https://github.com/pointwise/GlyphClientPython - source code
+https://github.com/pointwise/GlyphClientPython - API source code
